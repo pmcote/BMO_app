@@ -1,0 +1,8 @@
+{
+	"name": "BMOapp",
+	"description": "One Bill of Materials App, cleverly named",
+	"verson": "0.0.1",
+	"dependencies": {
+		"express": "3.x"
+	}
+}
