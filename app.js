@@ -1,5 +1,7 @@
-var express = require('express');
-var express = require('octopart')
+var express = require('express')
+    , octo = require('octopart');
+
+
 var app = express();
 
 
