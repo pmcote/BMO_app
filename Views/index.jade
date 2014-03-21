@@ -1,3 +1,9 @@
-extends layout
-form(action="...", method="post", enctype="multipart/form-data")
-  input(type="file", name="displayImage")
+extend layout
+
+block content
+	h1= title
+	form(action="uploadCSV", method='POST', enctype="multipart/form-data")
+	input(type="file", name="myCSV")
+	input(type='submit', value='Submit')
+
+

@@ -1,5 +1,12 @@
-!!!5
-html
-body
-form(action="...", method="post", enctype="multipart/form-data")
-  input(type="file", name="displayImage")
+doctype html
+html(lang = 'en')
+	head
+		title= title
+		meta(chatset = 'utf-8')
+		link(rel='stylesheet',href='/stylesheets/style.css')
+	body
+		header
+		.container
+			.main-content
+				block content
+		footer
