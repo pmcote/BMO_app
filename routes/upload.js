@@ -1,6 +1,6 @@
 var fs = require('fs');
 var models = require('../models/models');
-var async = require('async')
+//var async = require('async'); Add this functionality later.
 
 //Parse CSV for queries (we want the Value and the Type, also Ref)
 function parseCSV(path_to_CSV, callback) {
