@@ -1,11 +1,27 @@
 {
-	"name": "BMOapp",
-	"description": "One Bill of Materials App, cleverly named",
-	"verson": "0.0.1",
-	"dependencies": {
-		"express": "3.x",
-		"octopart": "*",
-		"csvtojson":"*",
-		"jade": "*"
-	}
+  "name": "BMOapp",
+  "description": "One Bill of Materials App, cleverly named",
+  "verson": "0.0.1",
+  "dependencies": {
+    "express": "3.x",
+    "octopart": "*",
+    "csvtojson": "*",
+    "jade": "*"
+  },
+  "version": "0.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pmcote/BMO_app.git"
+  },
+  "author": "Paige Cote",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pmcote/BMO_app/issues"
+  },
+  "homepage": "https://github.com/pmcote/BMO_app"
 }

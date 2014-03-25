@@ -1,0 +1,6 @@
+RefDes,Value,Quantity,Datasheet,Type,
+C1,"10uF, 25V",1,,CAP_0805,
+C2,47uF,1,,CAP_1210,
+C3,100nF,1,,CAP_0402,
+C4,100pF,1,,CAP_0402,
+C5,1uF,1,,CAP_0402,

@@ -1,12 +1,11 @@
 var express = require('express')
 	, http = require('http')
-    , octo = require('octopart')
+    , octopart = require('octopart')
     , Converter = require('csvtojson').core.Converter
     , routes = require('./routes')
     , path = require('path')
     , fs = require('fs')
-
-
+    , upload = require('./routes/upload')
 
 var app = express();
 
@@ -21,38 +20,8 @@ app.configure(function(){
 	app.use(express.static(__dirname + '/public'))
 })
 
-app.get('/', routes.index)
-app.post('/uploadCSV', function (req, res) { 
-	//get the file name
-	console.log(req.files)
-	var filename=req.files.myCSV.name;
-	var maxSizeOfFile=100;
-	var msg="";
-
-	// get the temporary location of the file
-    var tmp_path = req.files.myCSV.path;
-    
-	// set where the file should actually exists - in this case it is in the "images" directory
-    var target_path = __dirname +'/upload/' + req.files.myCSV.name;
-
-	if ((req.files.myCSV.size /1024 )< maxSizeOfFile){
-		fs.rename(tmp_path, target_path, function(err) {
-        if (err) throw err;
-        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
-			fs.unlink(tmp_path, function() {
-				if (err) throw err; 
-			});
-		});
-		msg="File uploaded sucessfully"
-	}else{
-	// delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
-		fs.unlink(tmp_path, function(err) {
-            if (err) throw err; 
-        });
-		msg="File upload failed.File extension not allowed and size must be less than "+maxSizeOfFile;
-	}
-	 res.end(msg);                                      
-});   
+app.get('/', routes.index);
+app.post('/uploadCSV', upload.upload); 
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
