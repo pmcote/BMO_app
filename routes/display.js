@@ -5,7 +5,6 @@ exports.view = function(req, res){
 		if (err)
 			return console.log('poop');
 		console.log('yay');
-		console.log(docs);
 		res.render('view', {title: 'BMO_app', BOM_info: docs});
 	})
 };

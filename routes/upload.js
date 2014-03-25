@@ -54,17 +54,6 @@ function parseCSV(path_to_CSV, callback) {
 }
 
 exports.upload = function(req, res) {
-	var maxSizeOfFile=100;
-	var msg="";
     var da_path = req.files.myCSV.path;
-	// res.end(msg);
 	parseCSV(da_path, function(){res.redirect('/view')});
-	//res.redirect('/view');
-
 }; 
-
-
-
-
-
-
