@@ -1,4 +1,8 @@
 extend layout
-	block content
-		h1= title
+block content
+	h1= title
+		h2 So much BOM, wow
+			each item, i in BOM_info
+				h3 #{item.url}
+	
 			

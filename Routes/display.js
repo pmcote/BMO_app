@@ -1,6 +1,10 @@
-//Display the optimized BOM information.
+var models = require('../models/models');
 
-//Display the returned array of information as a formatted
-// nice result
-
-//Eventually allow export/save for later
+exports.view = function(req, res){
+	var BOM_info = models.BOM_data.find({}, function(err, docs){
+		if (err)
+			return console.log('poo');
+		console.log('yay');
+		res.render('view', {title: 'BMO_app', BOM_info: docs});
+	})
+};

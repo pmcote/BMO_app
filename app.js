@@ -6,6 +6,7 @@ var express = require('express')
     , path = require('path')
     , fs = require('fs')
     , upload = require('./routes/upload')
+    , womp = require('./routes/display')
 
 var app = express();
 
@@ -22,6 +23,8 @@ app.configure(function(){
 
 app.get('/', routes.index);
 app.post('/uploadCSV', upload.upload); 
+app.get('/view', womp.view);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
@@ -32,6 +35,8 @@ http.createServer(app).listen(app.get('port'), function(){
 
 //Referenced sites: 
 //For file upload, after failing with like 100 other methods https://github.com/Tutorialindustry/node.js/tree/master/node.js-file-upload-tutorial
+//Octopart-node: https://github.com/octopart/octopart-node
+//Csv parsing: https://www.npmjs.org/package/csvtojson
 
 
 
