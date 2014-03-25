@@ -1,6 +1,5 @@
 var fs = require('fs');
 var models = require('../models/models');
-var Q = require('q');
 
 //Parse CSV for queries (we want the Value and the Type, also Ref)
 function parseCSV(path_to_CSV, callback) {
