@@ -1,6 +1,6 @@
 var fs = require('fs');
 var models = require('../models/models');
-var async = require('async');
+var Q = require('q');
 
 //Parse CSV for queries (we want the Value and the Type, also Ref)
 function parseCSV(path_to_CSV, callback) {
@@ -47,6 +47,7 @@ function parseCSV(path_to_CSV, callback) {
 				// console.log('Price for each Break Point:\n', price);
 			});
 		}
+		callback();
 	});
 	//read from file
 	csvConverter.from(csvFileName);
@@ -57,10 +58,9 @@ exports.upload = function(req, res) {
 	var msg="";
     var da_path = req.files.myCSV.path;
 	// res.end(msg);
-	async.series([ 
-	parseCSV(da_path),
-	res.redirect('/view')
-	]);
+	parseCSV(da_path, function(){res.redirect('/view')});
+	//res.redirect('/view');
+
 }; 
 
 
