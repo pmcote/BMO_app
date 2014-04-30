@@ -3,6 +3,7 @@ block content
 	h1= title
 		h2 So much BOM, wow
 			each item, i in BOM_info
+				p #{item.index}
 				p #{item.url}
 				p #{item.stock}
 				p #{item.price}

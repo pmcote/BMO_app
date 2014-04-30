@@ -1,10 +1,11 @@
-extend layout
+extends layout
 
 block content
-	h1= title
-		form(method='POST',action="/uploadCSV",enctype="multipart/form-data")
-			input(type="file", name="myCSV")
-			input(type='submit', class='btn', value='Submit', id = submitButton)
+	div.container
+		h1= title
+			form(method='POST',action="/uploadCSV",enctype="multipart/form-data")
+				input(type="file", name="myCSV")
+				input(type='submit', class='btn', value='Submit', id = submitButton)
 
 
 
