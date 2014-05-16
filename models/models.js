@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/BOM');
-
 var dataSchema = mongoose.Schema({
+	value: String,
 	url: String,
 	stock: String,
 	price:String

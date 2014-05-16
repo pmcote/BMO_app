@@ -6,40 +6,26 @@ var models = require('../models/models');
 
 function octoPartQuery(i, Value, finalCallback){
 
-	if (i < Value.length){
+	if (i < Value.length){ //Value is actually what sort of product we're looking for (ex: 10nF cap), but it's called value on the BOM so. . .
 
 		var octopart = require("octopart");
 			octopart.apikey = '4335fcd7';
 			
 		octopart.parts.search(Value[i], { start:0, limit:10 }).success(function(body) { 
-			var url = new models.BOM_data({url: body.results[i].item.offers[0].product_url}); 
-			var stock = new models.BOM_data({stock: body.results[i].item.offers[0].in_stock_quantity});
-			var price = new models.BOM_data({price: body.results[i].item.offers[0].prices.USD});
-			console.log("the shiz nizz");
-			console.log(url);
-			console.log(stock);
-			console.log(price);
+			for (var j=0; j<10; j++){
+				for (var k=0; k<body.results[j].item.offers.length; k++){
+					var value_data = new models.BOM_data({value: Value[i], url: body.results[j].item.offers[k].product_url, stock: body.results[j].item.offers[k].in_stock_quantity, price: body.results[j].item.offers[k].prices.USD}); 
 
-			url.save(function(err, docs){
-				
-				// if (err)
-				// 	return console.log('your database is sad')
-				// console.log('database is happy1')
-			});
-				stock.save(function(err, docs1){
-					// if (err)
-					// 	return console.log('your database is sad')
-					// console.log('database is happy2')
-			});	
-					price.save(function(err, docs2){
+					console.log("the shiz nizz");
+
+					value_data.save(function(err, value_data){
+						
 						// if (err)
 						// 	return console.log('your database is sad')
-						// console.log('database is happy3')
-						
-					
-					
-			});	
-			
+						// console.log('database is happy1')
+					});
+				}
+			}
 			octoPartQuery(i+1, Value, finalCallback);						
 			
 		});

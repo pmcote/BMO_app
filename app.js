@@ -7,6 +7,7 @@ var express = require('express')
     , fs = require('fs')
     , upload = require('./routes/upload')
     , womp = require('./routes/display')
+    , mongoose = require('mongoose');
 
 var app = express();
 
@@ -19,6 +20,7 @@ app.configure(function(){
 	app.use(express.bodyParser());
 	app.use(app.router);
 	app.use(express.static(__dirname + '/public'))
+	mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/BOM');
 })
 
 app.get('/', routes.index);
@@ -37,6 +39,12 @@ http.createServer(app).listen(app.get('port'), function(){
 //For file upload: https://github.com/Tutorialindustry/node.js/tree/master/node.js-file-upload-tutorial
 //Octopart-node: https://github.com/octopart/octopart-node
 //Csv parsing: https://www.npmjs.org/package/csvtojson
+
+//Shit to do:
+//Fix the Mongoose thing
+//Add optimization
+//Fix all the views and make it look pretty
+//Add some Users
 
 
 
